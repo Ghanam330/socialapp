@@ -1,14 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void navigateTo(context, widget) => Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => widget),
+      MaterialPageRoute(
+          builder: (context) => widget
+      ),
     );
 
 void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => widget),
-      (Route<dynamic> route) => false,
+      MaterialPageRoute(
+          builder: (context) => widget
+      ),
+      (
+      Route<dynamic> route
+      ) => false,
     );
 
 Widget defaultFormField({
@@ -69,7 +76,8 @@ Widget defaultButton({
     );
 
 Widget defaultTextButton({
-  @required Function function,
+  // @required Function function,
+  @required VoidCallback function,
   @required String text,
 }) =>
     TextButton(

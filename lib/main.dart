@@ -1,9 +1,16 @@
+import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:socialapp/blocobserver.dart';
+import 'package:socialapp/moules/login_screen/login.dart';
 
-import 'package:socialapp/moules/login_screen/login_screen.dart';
 
-void main() {
+
+void main() async{
+  await Firebase.initializeApp();
+  Bloc.observer=MyBlocObserver();
   runApp(MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
