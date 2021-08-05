@@ -1,7 +1,8 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
-import 'package:socialapp/moules/register_screen/register_screen.dart';
+import 'package:socialapp/modules/home_layout/social_layout.dart';
+import 'package:socialapp/modules/register_screen/register_screen.dart';
 
 
 import '../../component.dart';
@@ -26,23 +27,26 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (BuildContext context) =>SocialLoginCubit(),
       child: BlocConsumer<SocialLoginCubit,SocialLoginStates>(
         listener: (context, state) {
-          // if(state is SocialLoginSuccessState){
-          //   if(state.loginModel.status){
-          //     print(state.loginModel.message);
-          //     print(state.loginModel.date.token);
-          //   }else{
-          //     print(state.loginModel.message);
-          //     Fluttertoast.showToast(
-          //         msg: "This is Center Short Toast",
-          //         toastLength: Toast.LENGTH_LONG,
-          //         gravity: ToastGravity.BOTTOM,
-          //         timeInSecForIosWeb: 5,
-          //         backgroundColor: Colors.red,
-          //         textColor: Colors.white,
-          //         fontSize: 16.0
-          //     );
-          //   }
-          // }
+          if (state is SocialLoginErrorState) {
+            showToast(
+              text: state.error,
+              state: ToastStates.ERROR,
+            );
+          }
+          if(state is SocialLoginSuccessState) {
+
+
+            // // CacheHelper.saveData(
+            // //   key: 'uId',
+            // //   value: state.uId,
+            // // ).then((value)
+            // {
+              navigateAndFinish(
+                context,
+                SocialLayout(),
+              );
+            // });
+          }
         },
         builder: (context, state) {
           return Scaffold(
@@ -97,10 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           onSubmit: (v) {
                             if (formKey.currentState.validate()) {
-                              // SocialCubit.get(context).userLogin(
-                              //     email: emailController.text,
-                              //     password: passwordController.text
-                              // );
+                              SocialLoginCubit.get(context).userLogin(
+                                  email: emailController.text,
+                                  password: passwordController.text
+                              );
                             }
                           },
                           suffix: SocialLoginCubit.get(context).suffix,
@@ -115,34 +119,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 30.0,
                         ),
 
-                        // defaultButton(
-                        //     function: () {
-                        //
-                        //       ShopCubit.get(context).userLogin(
-                        //           email: emailController.text,
-                        //           password: passwordController.text);
-                        //
-                        //     },
-                        //     text: 'Login',
-                        //     isUpperCase: true),
-
-                        Conditional.single(
-                          context: context,
-                          conditionBuilder: (context) =>state is! SocialLoginLoadingState,
-                          widgetBuilder: (context) =>
-                              defaultButton(
-                                  function: () {
-                                    if (formKey.currentState.validate()) {
-                                      // SocialCubit.get(context).userLogin(
-                                      //     email: emailController.text,
-                                      //     password: passwordController.text
-                                      // );
-                                    }
-                                  },
-                                  text: 'Login',
-                                  isUpperCase: true
-                              ),
-                          fallbackBuilder: (context) =>
+                        ConditionalBuilder(
+                          condition: state is! SocialLoginLoadingState,
+                          builder: (context) => defaultButton(
+                            function: () {
+                              if (formKey.currentState.validate()) {
+                                SocialLoginCubit.get(context).userLogin(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                              }
+                            },
+                            text: 'login',
+                            isUpperCase: true,
+                          ),
+                          fallback: (context) =>
                               Center(child: CircularProgressIndicator()),
                         ),
                         SizedBox(

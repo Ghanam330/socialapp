@@ -1,14 +1,19 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socialapp/blocobserver.dart';
-import 'package:socialapp/moules/login_screen/login.dart';
+
+import 'modules/login_screen/login.dart';
+
 
 
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer=MyBlocObserver();
+  SharedPreferences.getInstance();
   runApp(MyApp());
 
 }
