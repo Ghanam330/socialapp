@@ -31,7 +31,7 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates> {
         phone: phone,
         uId: value.user.uid,
       );
-       emit(SocialRegisterSuccessState());
+       // emit(SocialRegisterSuccessState());
     }).catchError((error) {
       emit(SocialRegisterErrorState(error.toString()));
     });

@@ -10,6 +10,7 @@ import 'modules/login_screen/login.dart';
 
 
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer=MyBlocObserver();

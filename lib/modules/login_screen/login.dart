@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/home_layout/social_layout.dart';
 import 'package:socialapp/modules/register_screen/register_screen.dart';
+import 'package:socialapp/network/local/cache_helper.dart';
 
 
 import '../../component.dart';
@@ -35,17 +36,16 @@ class _LoginScreenState extends State<LoginScreen> {
           }
           if(state is SocialLoginSuccessState) {
 
-
-            // // CacheHelper.saveData(
-            // //   key: 'uId',
-            // //   value: state.uId,
-            // // ).then((value)
-            // {
+            CacheHelper.saveData(
+             key: 'uId',
+               value: state.uId,
+            ).then((value)
+            {
               navigateAndFinish(
                 context,
                 SocialLayout(),
               );
-            // });
+             });
           }
         },
         builder: (context, state) {

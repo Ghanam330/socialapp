@@ -1,5 +1,6 @@
 class AppLoginModel
 {
+
   bool status;
   String message;
   UserData data;
