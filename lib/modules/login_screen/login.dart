@@ -6,7 +6,7 @@ import 'package:socialapp/modules/register_screen/register_screen.dart';
 import 'package:socialapp/network/local/cache_helper.dart';
 
 
-import '../../component.dart';
+import '../../shard/components/component.dart';
 import 'cubit/cubit_login.dart';
 import 'cubit/states_login.dart';
 

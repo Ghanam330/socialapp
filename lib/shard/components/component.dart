@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:socialapp/styles/colors.dart';
 
 
 Widget defaultFormField({
@@ -149,3 +151,4 @@ Widget myDivider() => Padding(
     color: Colors.grey[300],
   ),
 );
+

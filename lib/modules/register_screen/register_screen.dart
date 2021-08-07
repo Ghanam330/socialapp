@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/modules/home_layout/social_layout.dart';
 
 
-import '../../component.dart';
+import '../../shard/components/component.dart';
 import 'cubit/cubit_register.dart';
 import 'cubit/states_register.dart';
 
