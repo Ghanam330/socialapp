@@ -1,7 +1,8 @@
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:socialapp/modules/home_layout/social_layout.dart';
+import 'package:socialapp/modules/home_layout/emailverifcation.dart';
+import 'package:socialapp/modules/home_layout/socail_screen.dart';
 import 'package:socialapp/modules/register_screen/register_screen.dart';
 import 'package:socialapp/network/local/cache_helper.dart';
 

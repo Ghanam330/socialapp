@@ -6,7 +6,8 @@ import 'package:socialapp/modules/home_layout/cubit/cubit_home.dart';
 import 'package:socialapp/modules/home_layout/cubit/states_home.dart';
 import 'package:socialapp/shard/components/component.dart';
 
-class SocialLayout extends StatelessWidget {
+class EmailVerifcation extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SocialHomeCubit, SocialHomeStates>(

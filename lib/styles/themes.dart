@@ -17,6 +17,7 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: HexColor('333739'),
     elevation: 0.0,
     titleTextStyle: TextStyle(
+      height: 1.3,
       color: Colors.white,
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
@@ -81,7 +82,9 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: Colors.white,
   ),
   textTheme: TextTheme(
+
     bodyText1: TextStyle(
+      height: 1.3,
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,

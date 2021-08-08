@@ -8,7 +8,8 @@ import 'package:socialapp/modules/home_layout/cubit/states_home.dart';
 import 'package:socialapp/shard/components/component.dart';
 
 import 'modules/home_layout/cubit/cubit_home.dart';
-import 'modules/home_layout/social_layout.dart';
+import 'modules/home_layout/emailverifcation.dart';
+import 'modules/home_layout/socail_screen.dart';
 import 'modules/login_screen/login.dart';
 import 'network/local/cache_helper.dart';
 import 'shard/components/constants.dart';
