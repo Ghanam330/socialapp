@@ -48,7 +48,13 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
     'Setting'
   ];
   void changeBottomNav(int index){
-    currentIndex =index;
-    emit(SocialChangeBottomNavStates());
+
+    if(index ==2){
+      emit(SocialNewPostStates());
+    }else{
+      currentIndex =index;
+      emit(SocialChangeBottomNavStates());
+    }
+
   }
 }
