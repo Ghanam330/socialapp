@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/models/user_model.dart';
 import 'package:socialapp/modules/chats/chats_screen.dart';
 import 'package:socialapp/modules/feeds/feeds_screen.dart';
+import 'package:socialapp/modules/new_post/new_post_screen.dart';
 import 'package:socialapp/modules/settings/setting_screen.dart';
 import 'package:socialapp/modules/user_screen/user_screen.dart';
 import 'package:socialapp/shard/components/constants.dart';
@@ -37,6 +38,7 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
   List<Widget> screens = [
     FeedsScreen(),
     ChatsScreen(),
+    NewPostsScreen(),
     UserScreen(),
     SettingScreen(),
   ];
@@ -45,6 +47,7 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
     'Home',
     'Chats',
     'Users',
+    'post',
     'Setting'
   ];
   void changeBottomNav(int index){
