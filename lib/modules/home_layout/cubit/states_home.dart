@@ -15,3 +15,12 @@ class SocialChangeBottomNavStates extends SocialHomeStates{}
 class SocialNewPostStates extends SocialHomeStates{}
 
 
+
+
+class SocialProfileImagePickedSuccessState extends SocialHomeStates{}
+
+class SocialSocialProfileImagePickedErrorState extends SocialHomeStates {}
+
+class SocialCoverImagePickedSuccessState extends SocialHomeStates{}
+
+class SocialSocialCoverImagePickedErrorState extends SocialHomeStates {}

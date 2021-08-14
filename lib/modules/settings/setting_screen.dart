@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/edit_Profile/edit_profile_screen.dart';
 import 'package:socialapp/modules/home_layout/cubit/cubit_home.dart';
 import 'package:socialapp/modules/home_layout/cubit/states_home.dart';
 import 'package:socialapp/shard/components/component.dart';
@@ -14,7 +13,8 @@ class SettingScreen extends StatelessWidget {
     return BlocConsumer<SocialHomeCubit, SocialHomeStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        var userModel =SocialHomeCubit.get(context).model;
+        var userModel = SocialHomeCubit.get(context).userModel;
+
 
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -35,8 +35,7 @@ class SettingScreen extends StatelessWidget {
                                 topLeft: Radius.circular(4.0),
                                 topRight: Radius.circular(4.0)),
                             image: DecorationImage(
-                                image: NetworkImage(
-                                    '${userModel.cover}'))),
+                                image: NetworkImage('${userModel.cover}'))),
                       ),
                     ),
                     CircleAvatar(
@@ -45,8 +44,7 @@ class SettingScreen extends StatelessWidget {
                           Theme.of(context).scaffoldBackgroundColor,
                       child: CircleAvatar(
                         radius: 60.0,
-                        backgroundImage: NetworkImage(
-                            '${userModel.image}'),
+                        backgroundImage: NetworkImage('${userModel.image}'),
                       ),
                     )
                   ],
@@ -140,21 +138,16 @@ class SettingScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-
                   Expanded(
                       child: OutlinedButton(
-                        onPressed: () {
-
-                        },
-                        child: Text(
-                          'Edit Photos',
-
-                        ),
-                      )
-                  ),
+                    onPressed: () {},
+                    child: Text(
+                      'Edit Photos',
+                    ),
+                  )),
                   OutlinedButton(
                     onPressed: () {
-
+                      navigateTo(context, EditProfileScreen());
                     },
                     child: Icon(
                       IconBroken.Edit,

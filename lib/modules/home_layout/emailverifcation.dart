@@ -19,9 +19,9 @@ class EmailVerifcation extends StatelessWidget {
               shadowColor: Colors.white,
             ),
             body: ConditionalBuilder(
-              condition: SocialHomeCubit.get(context).model != null,
+              condition: SocialHomeCubit.get(context).userModel != null,
               builder: (context) {
-                var model = SocialHomeCubit.get(context).model;
+                var model = SocialHomeCubit.get(context).userModel;
 
                 return Column(
                   children: [

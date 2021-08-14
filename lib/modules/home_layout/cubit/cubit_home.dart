@@ -1,7 +1,11 @@
+import 'dart:ffi';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:socialapp/models/user_model.dart';
 import 'package:socialapp/modules/chats/chats_screen.dart';
 import 'package:socialapp/modules/feeds/feeds_screen.dart';
@@ -16,7 +20,7 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
 
   static SocialHomeCubit get(context) => BlocProvider.of(context);
 
-  UserModel model;
+  UserModel userModel;
 
   void getUserDate() {
     emit(SocialGetUserLoadingState());
@@ -26,7 +30,7 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
         .doc(uId)
         .get()
         .then((value) => {
-              model = UserModel.fromJson(value.data()),
+              userModel = UserModel.fromJson(value.data()),
               emit(SocialGetUserSuccessState()),
             })
         .catchError((error) {});
@@ -59,5 +63,21 @@ class SocialHomeCubit extends Cubit<SocialHomeStates> {
       emit(SocialChangeBottomNavStates());
     }
 
+  }
+
+
+  File profileImage;
+  final picker = ImagePicker();
+  Future<Void> getProfileImage() async {
+    final pickedFile = await picker.getImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      profileImage = File(pickedFile.path);
+      emit(SocialProfileImagePickedSuccessState());
+    } else {
+      print('No image select');
+      emit(SocialSocialProfileImagePickedErrorState());
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:socialapp/styles/colors.dart';
+import 'package:socialapp/styles/icon_broken.dart';
 
 
 Widget defaultFormField({
@@ -153,3 +154,26 @@ Widget myDivider() => Padding(
   ),
 );
 
+
+
+Widget defaultAppBar
+    ({
+     @required BuildContext context,
+  String title,
+  List<Widget>actions
+    })=>AppBar(
+  titleSpacing: 5.0,
+      leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+
+          icon:Icon(
+            IconBroken.Arrow___Left_2
+          ),
+      ),
+  title: Text(
+    'Add Post',
+  ),
+  actions: actions,
+    );
